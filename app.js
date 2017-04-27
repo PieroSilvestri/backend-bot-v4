@@ -19,6 +19,10 @@ var connector = new builder.ChatConnector({
 var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
+process.on('uncaughtException', function (err) {
+    console.log(err);
+}); 
+
 //
 // BOT DIALOGS
 //
