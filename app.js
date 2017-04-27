@@ -1,7 +1,6 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 
-
 //
 // BOT SETUP
 //
@@ -28,5 +27,5 @@ process.on('uncaughtException', function (err) {
 //
 
 bot.dialog('/', function(session){
-	session.send("Hello World Fuck you");
+	session.send("Hello World I love you. :)");
 });
