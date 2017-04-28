@@ -23,8 +23,8 @@ var connection = mysql.createPool({
 
 //Create chat bot
 var connector = new builder.ChatConnector({
-	appId: 'a11ec4b5-b7c1-4e52-accc-97a9efebed7d',
-	appPassword: 'nybp2a71m6bVWrX6JVX18MU'
+	appId: '768231e9-c384-4f09-985e-d24834ecb241',
+	appPassword: 'UcbkfkmiNCjaJQzqdbceEKC'
 });
 
 var bot = new builder.UniversalBot(connector);
@@ -32,7 +32,7 @@ server.post('/api/messages', connector.listen());
 
 // LUIS
 /**/
-var model = 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/cf7b0942-055c-4111-87bf-d831a1725efa?subscription-key=728ad137437444a6b90797a5f388f685&timezoneOffset=0&verbose=true&q=';
+var model = 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/da70a702-3ef9-4b36-bbcb-6d0db19f39ef?subscription-key=24ce1168c7f64ad99c4d004e890e66dc&verbose=true&timezoneOffset=0&q=';
 var recognizer = new builder.LuisRecognizer(model);
 var dialog = new builder.IntentDialog({ recognizers: [recognizer] });
 
