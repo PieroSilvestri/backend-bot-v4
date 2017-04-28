@@ -35,6 +35,7 @@ server.post('/api/messages', connector.listen());
 var model = 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/cf7b0942-055c-4111-87bf-d831a1725efa?subscription-key=728ad137437444a6b90797a5f388f685&timezoneOffset=0&verbose=true&q=';
 var recognizer = new builder.LuisRecognizer(model);
 var dialog = new builder.IntentDialog({ recognizers: [recognizer] });
+
 bot.dialog('/', dialog);
 
 
@@ -70,11 +71,14 @@ dialog.matches('BestTeam', [
 				}
 			})
 		}
-	});
-        }
+		});
+    }
     ]);
-dialog.matches('Incani', builder.DialogAction.send('Gay'));
+dialog.matches('IncaniResponse', builder.DialogAction.send('Gay'));
 dialog.matches('NonFa', builder.DialogAction.send('15 più 18 non fa 36! Dio ti maledica! Te do un scjafon che te pituro su pel muro! TU MARE PUTTANA! 15 e 18 quanto fa COGLIONE!'));
+dialog.matches('None', builder.DialogAction.send('Non ho capito. Dai scrivimi altro!'));
+dialog.matches('Saluto', builder.DialogAction.send('Ciao! Come stai?'));
+
 
 dialog.onDefault(builder.DialogAction.send("I'm sorry I didn't understand. I can only create & delete alarms."));
 
