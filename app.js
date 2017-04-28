@@ -27,5 +27,5 @@ process.on('uncaughtException', function (err) {
 //
 
 bot.dialog('/', function(session){
-	session.send("Hello World! Ciao sbuk :)");
+	session.send("Hello World! Ciao a tutti :)");
 });
