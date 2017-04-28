@@ -1,6 +1,7 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 var mysql = require('mysql');
+var services = require('./controllers/services');
 
 //
 // BOT SETUP
@@ -77,7 +78,20 @@ dialog.matches('BestTeam', [
 dialog.matches('IncaniResponse', builder.DialogAction.send('Gay'));
 dialog.matches('NonFa', builder.DialogAction.send('15 più 18 non fa 36! Dio ti maledica! Te do un scjafon che te pituro su pel muro! TU MARE PUTTANA! 15 e 18 quanto fa COGLIONE!'));
 dialog.matches('None', builder.DialogAction.send('Non ho capito. Dai scrivimi altro!'));
-dialog.matches('Saluto', builder.DialogAction.send('Ciao! Come stai?'));
+
+dialog.matches('Saluto', 
+	[
+		function(session, args, next){
+			services.randomSaluto('jim', '123456', function (err, data) {
+			    if (err) {
+			        console.log(err);
+			    } else {
+			        session.send(data);
+			    }
+			}); 
+		}
+	]);
+
 dialog.matches('Offesa', builder.DialogAction.send('Ma che cazzo vuoi?? Stai zitto e basta!!'));
 dialog.matches('Ringraziamento', builder.DialogAction.send('Grazie mulo!'));
 
@@ -90,6 +104,8 @@ dialog.onDefault(builder.DialogAction.send("I'm sorry I didn't understand. I can
 process.on('uncaughtException', function (err) {
     console.log(err);
 }); 
+
+
 
 
 //

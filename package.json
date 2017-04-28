@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Bot Organizer",
   "engines": {
-    "node": "6.9.2"
+    "node": "7.9.0"
   },
   "main": "app.js",
   "scripts": {
@@ -23,19 +23,8 @@
   },
   "dependencies": {
     "async": "^1.5.0",
-    "body-parser": "^1.14.1",
-    "connect-redis": "^3.0.1",
     "express": "^4.13.3",
-    "ejs": "2.4.1",
-    "express-session": "^1.12.1",
-    "fs": "0.0.2",
-    "http-proxy": "^1.12.0",
-    "morgan": "^1.6.1",
-    "multer": "^1.2.0",
     "mysql": "^2.9.0",
-    "node-mysql": "^0.4.2",
-    "xls-to-json": "^0.3.2",
-    "xlsx-to-json": "^0.2.4",
     "botbuilder": "^3.7.0",
     "restify": "^4.3.0"
   },
