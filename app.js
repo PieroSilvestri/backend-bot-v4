@@ -27,5 +27,5 @@ process.on('uncaughtException', function (err) {
 //
 
 bot.dialog('/', function(session){
-	session.send("Hello World! First node bot :)");
+	session.send("Hello World! Ciao sbuk :)");
 });
