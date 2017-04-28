@@ -28,7 +28,7 @@ var connector = new builder.ChatConnector({
 });
 
 var bot = new builder.UniversalBot(connector);
-server.post('/api/messages', connector.listen());
+server.post('/api/v1/messages', connector.listen());
 
 // LUIS
 /**/
