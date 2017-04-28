@@ -82,7 +82,7 @@ dialog.matches('None', builder.DialogAction.send('Non ho capito. Dai scrivimi al
 dialog.matches('Saluto', 
 	[
 		function(session, args, next){
-			services.randomSaluto('jim', '123456', function (err, data) {
+			services.randomSaluto(function (err, data) {
 			    if (err) {
 			        console.log(err);
 			    } else {
@@ -90,9 +90,22 @@ dialog.matches('Saluto',
 			    }
 			}); 
 		}
-	]);
+	]
+);
 
-dialog.matches('Offesa', builder.DialogAction.send('Ma che cazzo vuoi?? Stai zitto e basta!!'));
+dialog.matches('Offesa', 
+	[
+		function(session, args, next){
+			services.randomOffesa(function (err, data) {
+			    if (err) {
+			        console.log(err);
+			    } else {
+			        session.send(data);
+			    }
+			}); 
+		}
+	]
+);
 dialog.matches('Ringraziamento', builder.DialogAction.send('Grazie mulo!'));
 
 

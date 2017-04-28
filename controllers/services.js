@@ -22,7 +22,7 @@ var timeoutProva = function (delay) {
   })
 }
  
-var randomSaluto = function (user, pass, callback) {
+var randomSaluto = function (callback) {
     connection.getConnection(function(error, tempcont){
 			if(error){
 				//tempcont.release();
@@ -47,9 +47,43 @@ var randomSaluto = function (user, pass, callback) {
 							session.send('Errore.');
 						}
 						var x = (Math.floor((Math.random() * rows.length) + 1) - 1);
-						var saluto = rows[x];
-						console.log("x: " + x + " saluto testo: " + saluto.TESTO);
-						callback(null, saluto.TESTO);
+						var tempString = rows[x];
+						console.log("x: " + x + " tempString testo: " + tempString.TESTO);
+						callback(null, tempString.TESTO);
+					}
+				})
+			}
+		});
+}
+
+var randomOffesa = function (callback) {
+    connection.getConnection(function(error, tempcont){
+			if(error){
+				//tempcont.release();
+				console.log('Error');
+				console.log(error);
+				return 'Errore.';
+
+			}else{
+				console.log('Connected! WELL DONE!');
+				var query = "SELECT * FROM bot_offesa";
+
+				tempcont.query(query, function(error, rows, fields){
+
+					tempcont.release();
+
+					if(!!error){
+						console.log('Error in the query');
+						console.log(error)
+						callback(error, null);
+					}else{
+						if(rows.length == 0){
+							session.send('Errore.');
+						}
+						var x = (Math.floor((Math.random() * rows.length) + 1) - 1);
+						var tempString = rows[x];
+						console.log("x: " + x + " tempString testo: " + tempString.TESTO);
+						callback(null, tempString.TESTO);
 					}
 				})
 			}
@@ -63,3 +97,4 @@ var private = function(a,b) {
 exports.sum = sum; //esportiamo la funzione sum
 exports.timeoutProva = timeoutProva; //esportiamo la funzione product 
 exports.randomSaluto = randomSaluto; //esportiamo la funzione product 
+exports.randomOffesa = randomOffesa;
